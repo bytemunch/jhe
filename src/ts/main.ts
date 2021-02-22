@@ -19,12 +19,35 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 //@ts-ignore
 window.svgClickHandler = e => {
-    openHome();
+    openPage('home');
 }
 
 const contentDiv = document.querySelector('#content');
 
-export const openHome = () => {
+export const openPage = pageId => {
+    if (document.querySelector('jhe-nav')) (<NavBar>document.querySelector('jhe-nav')).close();
+    const pageManifest = {
+        'home': HomePage,
+        'about': AboutPage,
+        'contact': ContactPage
+    }
+
+    if (!pageManifest[pageId]) {
+        console.error('Invalid page!');
+        return;
+    }
+
+    if (document.querySelector('#page-container')) document.querySelector('#page-container').innerHTML = '';
+
+    if (pageId == 'home') {
+        openHome();
+        return;
+    }
+
+    document.querySelector('#page-container').appendChild(new pageManifest[pageId]);
+}
+
+const openHome = () => {
     if (!splashClosed) {
         splashClosed = true;
         document.removeEventListener('click', openHome);
@@ -42,19 +65,13 @@ export const openHome = () => {
         contentDiv.appendChild(pc);
     }
 
-    document.querySelector('#page-container').innerHTML = '';
+    if (!document.querySelector('#floating-logo')) {
+        const fl = document.createElement('object');
+        fl.id = 'floating-logo';
+        fl.data = './img/logo.svg';
+        fl.type = 'image/svg+xml';
+        contentDiv.appendChild(fl);
+    }
 
     document.querySelector('#page-container').appendChild(new HomePage);
-}
-
-export const openAbout = () => {
-    document.querySelector('#page-container').innerHTML = '';
-
-    document.querySelector('#page-container').appendChild(new AboutPage);
-}
-
-export const openContact = () => {
-    document.querySelector('#page-container').innerHTML = '';
-
-    document.querySelector('#page-container').appendChild(new ContactPage);
 }
