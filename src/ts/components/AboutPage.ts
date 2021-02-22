@@ -4,7 +4,7 @@ export class AboutPage extends HTMLElement {
     }
 
     connectedCallback() {
-        this.classList.add('left');
+        this.classList.add('left', 'page');
 
         let txtDiv = document.createElement('div');
 

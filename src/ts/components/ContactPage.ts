@@ -4,23 +4,13 @@ export class ContactPage extends HTMLElement {
     }
 
     applyStyles() {
-        this.style.width = "95%";
-        this.style.maxWidth = "500px";
-        this.style.background = '#fafafa';
 
-        this.style.margin = '5px auto';
-
-        this.style.display = 'block';
-        this.style.height = '80%';
-        this.style.minHeight = '700px';
-        this.style.position = 'relative';
-        // this.style.top = 'max(8vw, 80px)';
-        this.style.padding = '5px';
-        this.style.boxShadow = "0px 0px 5px 0px black"
     }
 
     connectedCallback() {
         this.applyStyles();
+
+        this.classList.add('page');
 
         let headline = document.createElement('h2');
         headline.style.textAlign = 'center';

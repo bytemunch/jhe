@@ -44,7 +44,11 @@ export const openPage = pageId => {
         return;
     }
 
-    document.querySelector('#page-container').appendChild(new pageManifest[pageId]);
+    let newPage = new pageManifest[pageId];
+
+    document.querySelector('#page-container').appendChild(newPage);
+
+    newPage.classList.add('ani-fadeIn');
 }
 
 const openHome = () => {
@@ -54,10 +58,12 @@ const openHome = () => {
         document.querySelector('#splash').classList.add('ani-fadeOut');
         setTimeout(() => {
             document.querySelector('#splash').parentElement.removeChild(document.querySelector('#splash'));
-        }, 1000);
+        }, 330);
     }
 
-    if (!document.querySelector('jhe-nav')) contentDiv.appendChild(new NavBar);
+    const navBar = new NavBar;
+    if (!document.querySelector('jhe-nav')) contentDiv.appendChild(navBar);
+    navBar.classList.add('ani-fadeIn');
 
     if (!document.querySelector('#page-container')) {
         const pc = document.createElement('div');
@@ -71,7 +77,11 @@ const openHome = () => {
         fl.data = './img/logo.svg';
         fl.type = 'image/svg+xml';
         contentDiv.appendChild(fl);
+        fl.classList.add('ani-fadeIn');
     }
 
-    document.querySelector('#page-container').appendChild(new HomePage);
+    const newPage = new HomePage;
+    document.querySelector('#page-container').appendChild(newPage);
+    newPage.classList.add('ani-fadeIn');
+    //TODO not DRY
 }

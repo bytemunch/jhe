@@ -4,6 +4,8 @@ export class HomePage extends HTMLElement {
     }
 
     connectedCallback() {
+        this.classList.add('page');
+        
         let txtDiv = document.createElement('div');
 
         txtDiv.classList.add('page-text');

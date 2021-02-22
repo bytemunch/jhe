@@ -19,6 +19,6 @@
         position: relative;
     }
     .left .page-text {
-        left: unset;
+        left: 5%;
     }
 }
