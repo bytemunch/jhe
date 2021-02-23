@@ -2,6 +2,9 @@ export class Carousel extends HTMLElement {
     imageA: HTMLImageElement = new Image;
     imageB: HTMLImageElement = new Image;
 
+    imageAContainer:HTMLDivElement = document.createElement('div');
+    imageBContainer:HTMLDivElement = document.createElement('div');
+
     sources: string[] = [];
 
     currentSrc: number = 0;
@@ -13,6 +16,8 @@ export class Carousel extends HTMLElement {
         for (let i=0; i<o.count; i++) {
             this.sources.push(o.sourceFolder+'/'+(i+1)+'.png');
         }
+
+        this.currentSrc = this.arrWrap(Math.floor(Math.random()*o.count));
     }
 
     arrWrap(n) {
@@ -20,8 +25,14 @@ export class Carousel extends HTMLElement {
     }
 
     connectedCallback() {
+        this.imageAContainer.appendChild(this.imageA);
+        this.imageBContainer.appendChild(this.imageB);
+
+        this.imageAContainer.classList.add('carousel-container');
+        this.imageBContainer.classList.add('carousel-container');
+
         this.imageA.src = this.sources[this.arrWrap(this.currentSrc)];
-        this.appendChild(this.imageA);
+        this.appendChild(this.imageAContainer);
 
         for (let img of this.sources) {
             // precache images in carousel
@@ -34,8 +45,8 @@ export class Carousel extends HTMLElement {
 
     nextImage() {
         this.currentSrc++;
-        let next = this.onImageA ? this.imageB : this.imageA;
-        let prev = this.onImageA ? this.imageA : this.imageB;
+        let next = this.onImageA ? this.imageBContainer : this.imageAContainer;
+        let prev = this.onImageA ? this.imageAContainer : this.imageBContainer;
         prev.classList.remove('ani-flyInRight');
         prev.classList.add('ani-flyOutRight');
         // timeout then remove
@@ -43,7 +54,7 @@ export class Carousel extends HTMLElement {
             this.removeChild(prev);
         }, 500);
 
-        next.src = this.sources[this.arrWrap(this.currentSrc)];
+        (<HTMLImageElement>next.firstElementChild).src = this.sources[this.arrWrap(this.currentSrc)];
         next.classList.add('ani-flyInRight');
         this.appendChild(next);
 

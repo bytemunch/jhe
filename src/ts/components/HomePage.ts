@@ -8,7 +8,7 @@ export class HomePage extends HTMLElement {
     connectedCallback() {
         this.classList.add('page');
 
-        let carousel = new Carousel({sourceFolder: './img/homeCarousel', count: 3});
+        let carousel = new Carousel({sourceFolder: './img/homeCarousel', count: 5});
         this.appendChild(carousel);
         
         let txtDiv = document.createElement('div');
