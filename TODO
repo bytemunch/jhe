@@ -4,7 +4,14 @@ blink c2a text on splash
 
 cycle splash animation on mobile
 
-image carousel
+testimonials
+
+page per service
+
+[O] image carousel
+
+navbar sane breakpoint
+    (after nav text and style finalized)
 
 email form? i'll ask joe first, mailto: might be better
 

@@ -2,6 +2,7 @@ import { AboutPage } from "./components/AboutPage";
 import { ContactPage } from "./components/ContactPage";
 import { HomePage } from "./components/HomePage";
 import { NavBar } from "./components/NavBar";
+import { ServicesPage } from "./components/ServicesPage";
 
 console.log('Hello, PWA!');
 
@@ -29,7 +30,8 @@ export const openPage = pageId => {
     const pageManifest = {
         'home': HomePage,
         'about': AboutPage,
-        'contact': ContactPage
+        'contact': ContactPage,
+        'services': ServicesPage,
     }
 
     if (!pageManifest[pageId]) {

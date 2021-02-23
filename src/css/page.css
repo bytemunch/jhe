@@ -6,19 +6,42 @@
     width: 90%;
     left: 5%;
     position: relative;
+    display: block;
+    float: left;
 }
 
 .flavour-text {
     width: 90%;
 }
 
+jhe-carousel {
+    width: 90%;
+    height: 45vw;
+    left: 5%;
+    display: block;
+    float: left;
+    top: 40%;
+    position: relative;
+    transform: translateY(-50%);
+}
+
+jhe-carousel img {
+    width: 100%;
+    position: absolute;
+    box-shadow: 0 0 5px black;
+}
+
 @media screen and (min-width: 769px) {
     .page-text {
-        width: 50%;
-        left: 50%;
+        width: 45%;
         position: relative;
     }
     .left .page-text {
         left: 5%;
+    }
+    jhe-carousel {
+        width: 45%;
+        left: 2.5%;
+        height: 30%;
     }
 }

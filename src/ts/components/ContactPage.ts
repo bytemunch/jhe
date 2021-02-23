@@ -40,9 +40,6 @@ export class ContactPage extends HTMLElement {
         phoneIcon.src = './img/phone.svg';
 
         phoneLine.appendChild(phoneIcon);
-
-
-
     }
 }
 
